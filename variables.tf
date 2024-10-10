@@ -37,6 +37,20 @@ variable "project_roles" {
   default     = []
 }
 
+variable "project_roles_with_conditions" {
+  type = list(object({
+    project = string
+    role    = string
+    condition = list(object({
+      title       = string
+      description = string
+      expression  = string
+    }))
+  }))
+  description = "Common roles to apply to all service accounts, defined as a list of objects with project, role, and a required condition. Each object must specify a project, role, and a condition (title, description, expression)."
+  default     = []
+}
+
 variable "grant_billing_role" {
   type        = bool
   description = "Grant billing user role."
