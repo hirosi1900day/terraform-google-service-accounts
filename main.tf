@@ -37,6 +37,7 @@ locals {
     [for pair in local.name_role_with_condition_pairs : "${pair[0]}-${pair[1].role}"],
     [for pair in local.name_role_with_condition_pairs : {
       name      = pair[0]
+      project   = pair[1].project
       role      = pair[1].role
       condition = pair[1].condition
     }]
