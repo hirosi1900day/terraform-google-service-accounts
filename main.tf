@@ -34,7 +34,7 @@ locals {
 
   name_role_with_condition_pairs = setproduct(local.names, toset(var.project_roles_with_conditions))
   project_roles_with_conditions_map_data = zipmap(
-    [for pair in local.name_role_with_condition_pairs : "${pair[0]}-${pair[1].role}"],
+    [for pair in local.name_role_with_condition_pairs : "${pair[0]}-${pair[1].project}=>${pair[1].role}"],
     [for pair in local.name_role_with_condition_pairs : {
       name      = pair[0]
       project   = pair[1].project
